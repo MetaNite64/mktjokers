@@ -8,8 +8,8 @@ SMODS.Joker{ --Iris the Bnuuy!
     loc_txt = {
         ['name'] = 'Iris the Bnuuy!',
         ['text'] = {
-            [1] = 'Creates a random {C:tarot}Tarot{} Card',
-            [2] = 'after defeating {C:attention}Boss Blind{}'
+            [1] = 'Creates a random {C:spectral}Spectral{} Card',
+            [2] = 'after defeating a {C:attention}Boss Blind{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -19,6 +19,7 @@ SMODS.Joker{ --Iris the Bnuuy!
         x = 8,
         y = 3
     },
+    pronouns = "he_they",
     cost = 6,
     rarity = 2,
     blueprint_compat = true,
@@ -27,6 +28,9 @@ SMODS.Joker{ --Iris the Bnuuy!
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     calculate = function(self, card, context)
         if context.end_of_round and context.main_eval and G.GAME.blind.boss  then
@@ -37,7 +41,7 @@ SMODS.Joker{ --Iris the Bnuuy!
                     G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
                     G.E_MANAGER:add_event(Event({
                         func = function()
-                            SMODS.add_card{set = 'Tarot'}
+                            SMODS.add_card{set = 'Spectral'}
                             G.GAME.consumeable_buffer = 0
                             return true
                         end

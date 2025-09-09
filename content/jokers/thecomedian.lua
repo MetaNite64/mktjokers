@@ -1,4 +1,4 @@
-SMODS.Joker{ --The Comedian
+SMODS.Joker { -- The Comedian
     key = "thecomedian",
     config = {
         extra = {
@@ -9,8 +9,8 @@ SMODS.Joker{ --The Comedian
     loc_txt = {
         ['name'] = 'The Comedian',
         ['text'] = {
-            '{X:red,C:white}X10{} Mult',
-            '{C:green}#1# in 10000{} chance this card is',
+            '{C:white,X:mult}X10{} Mult',
+            '{C:green}#1# in #2#{} chance this card is',
             'destroyed at the end of round'
         }
     },
@@ -18,6 +18,7 @@ SMODS.Joker{ --The Comedian
         x = 8,
         y = 0
     },
+    pronouns = "it_its",
     cost = 4,
     rarity = 1,
     blueprint_compat = true,
@@ -26,6 +27,10 @@ SMODS.Joker{ --The Comedian
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
     in_pool = function() return G.GAME.pool_flags.cavendish_extinct end,
 
     loc_vars = function(self, info_queue, card)

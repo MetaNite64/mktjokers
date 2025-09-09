@@ -8,8 +8,8 @@ SMODS.Joker{ --True Kobayashi
     loc_txt = {
         ['name'] = 'True Kobayashi',
         ['text'] = {
-            [1] = '{C:planet}Everything{} in the shop is {C:attention}free.{}',
-            [2] = 'Rerolls start at {C:money}$0{}'
+            [1] = '{C:attention}Everything{} in shop is {C:green}free',
+            [2] = '{C:green}Rerolls{} start at {C:money}$0'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -19,6 +19,7 @@ SMODS.Joker{ --True Kobayashi
         x = 9,
         y = 0
     },
+    pronouns = "she_her",
     cost = 20,
     rarity = 4,
     blueprint_compat = true,
@@ -27,6 +28,10 @@ SMODS.Joker{ --True Kobayashi
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
     in_pool = function(self, args)
           return (
           not args 

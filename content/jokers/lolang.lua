@@ -8,7 +8,7 @@ SMODS.Joker{ --lolang from librarby of runia
     loc_txt = {
         ['name'] = 'lolang from librarby of runia',
         ['text'] = {
-            [1] = 'Gives {X:red,C:white}X2{} Mult if played',
+            [1] = '{C:white,X:chips}X2{} Chips if played',
             [2] = 'hand contains a {C:attention}Queen{}',
             [3] = '',
             [4] = '{s:0.7,C:inactive,E:1}Himdeul-eoss-eoyo? Jichyeoss-eoyo. Swigosip-eoyo?{}',
@@ -22,14 +22,18 @@ SMODS.Joker{ --lolang from librarby of runia
         x = 0,
         y = 3
     },
+    pronouns = "he_him",
     cost = 4,
-    rarity = 1,
+    rarity = 3,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then

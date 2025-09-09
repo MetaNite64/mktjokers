@@ -1,4 +1,4 @@
-SMODS.Joker{ --Waters Of Nazareth
+SMODS.Joker{ -- Waters Of Nazareth
     key = "wnazareth",
     config = {
         extra = {
@@ -14,13 +14,17 @@ SMODS.Joker{ --Waters Of Nazareth
     loc_txt = {
         ['name'] = 'Jokers Of Nazareth',
         ['text'] = {
-            'Each {C:clubs}Club{} held in hand gives {C:red}#1#x{} Mult'
+            'Each {C:clubs}Club{} card held in',
+            'hand gives {C:mult}+#1#{} Mult',
+            'per {C:clubs}Club{} card',
+            'in full deck'
         }
     },
     pos = {
         x = 5,
         y = 1
     },
+    pronouns = "it_its",
     cost = 6,
     rarity = 3,
     blueprint_compat = true,
@@ -29,6 +33,9 @@ SMODS.Joker{ --Waters Of Nazareth
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.hand and not context.end_of_round  then

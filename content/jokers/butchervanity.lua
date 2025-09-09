@@ -6,18 +6,19 @@ SMODS.Joker{ --Butcher Vanity
             inc = 1,
             numera = 1,
             denomina = 5,
-            odds = 1
         }
     },
     loc_txt = {
         ['name'] = 'Butcher Vanity',
         ['text'] = {
-            [1] = '{C:attention}#3#/#4#{} chance for a random',
-            [2] = 'consumeable to be destroyed.',
-            [3] = 'Adds an additional {X:red,C:white}#2#X{} Mult for',
-            [4] = 'every card destroyed.',
-            [5] = '{C:inactive,s:0.8}(Must have at least 1 consumeable.){}',
-            [6] = '{C:inactive}(Currently #1#X Mult){}'
+            [1] = '{C:attention}#3#/#4#{} chance to destroy',
+            [2] = 'a random consumable',
+            [3] = 'when hand is played',
+            [4] = 'Gains {X:red,C:white}X#2#{} Mult for',
+            [5] = 'every consumable destroyed',
+            [6] = 'by this Joker',
+            [7] = '{C:inactive,s:0.8}(Must have at least 1 consumeable){}',
+            [8] = '{C:inactive}(Currently #1#X Mult){}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -27,24 +28,28 @@ SMODS.Joker{ --Butcher Vanity
         x = 4,
         y = 3
     },
+    pronouns = "she_her",
     cost = 4,
-    rarity = 1,
+    rarity = 4,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     loc_vars = function(self, info_queue, card)
-        local new_numerator, new_denominator = SMODS.get_probability_vars(card, numera, card.ability.extra.odds, 'j_mktjk_butchervanity') 
-        return {vars = {card.ability.extra.mult, card.ability.extra.inc, card.ability.extra.numera, card.ability.extra.denomina, new_numerator, new_denominator}}
+        local new_numerator, new_denominator = SMODS.get_probability_vars(card, card.ability.extra.numera, card.ability.extra.denomina, 'j_mktjk_butchervanity') 
+        return {vars = {card.ability.extra.mult, card.ability.extra.inc, new_numerator, new_denominator}}
     end,
 
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
             if #G.consumeables.cards >= 1 then
-                if SMODS.pseudorandom_probability(card, 'group_0_9e342b2a', 1, card.ability.extra.odds, 'j_mktjk_butchervanity', false) then
+                if SMODS.pseudorandom_probability(card, 'group_0_9e342b2a', card.ability.extra.numera, card.ability.extra.denomina, 'j_mktjk_butchervanity', false) then
               local target_cards = {}
             for i, consumable in ipairs(G.consumeables.cards) do
                 table.insert(target_cards, consumable)
@@ -53,7 +58,7 @@ SMODS.Joker{ --Butcher Vanity
                 local card_to_destroy = pseudorandom_element(target_cards, pseudoseed('destroy_consumable'))
                 G.E_MANAGER:add_event(Event({
                     func = function()
-                        card_to_destroy:start_dissolve()
+                        SMODS.destroy_cards(card_to_destroy)
                         return true
                     end
                 }))

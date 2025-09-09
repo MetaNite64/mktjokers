@@ -8,20 +8,22 @@ SMODS.Joker{ --jokerno$
     loc_vars = function(self, queue, card) return {
         vars = {
             card.ability.extra.money_mult,
-            card.ability.extra.money_mult*math.floor(G.GAME.dollars)
+            math.max(1, card.ability.extra.money_mult * math.floor(0 - G.GAME.dollars))
         }
     } end,
     loc_txt = {
         ['name'] = 'jokerno$',
         ['text'] = {
-            '{C:red}+#1#{} Mult for every {C:money}$1{} you have',
-            '{C:inactive}(Currently +#2# Mult){}'
+            'Gains {X:mult,C:white}X#1#{} Mult for',
+            'every {C:money}$1{} in {C:red}debt',
+            '{C:inactive}(Currently {C:white,X:mult}X#2#{} {C:inactive}Mult)'
         }
     },
     pos = {
         x = 3,
         y = 1
     },
+    pronouns = "he_him",
     cost = 7,
     rarity = 2,
     blueprint_compat = true,
@@ -30,10 +32,17 @@ SMODS.Joker{ --jokerno$
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
+    set_ability = function(self, card, initial, delay_sprites)
+      card:set_rental(true)
+    end,
 
     calculate = function(self, card, context)
         if context.joker_main then
-                return {xmult = card.ability.extra.money_mult * math.floor(G.GAME.dollars)}
+                return {xmult = math.max(1, card.ability.extra.money_mult * math.floor(0 - G.GAME.dollars))}
         end
     end
 }

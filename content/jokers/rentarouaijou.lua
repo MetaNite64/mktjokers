@@ -15,16 +15,17 @@ SMODS.Joker{ --Rentarou Aijou
     loc_txt = {
         ['name'] = '{f:5}愛城 恋太郎',
         ['text'] = {
-            'Gives XMult equal to the amount',
-            'of soulmates Rentarou has',
-            'and revives you upon death in boss blinds.',
-            '{C:inactive}(currently {}{X:mult,C:white}#1#X{}{C:inactive} mult){}'
+            'Gains {X:mult,C:white}X1{} Mult per',
+            'soulmate Rentarou has',
+            'Prevents Death in boss blinds',
+            '{C:inactive}(currently {}{X:mult,C:white}x#1#{}{C:inactive} mult){}'
         }
     },
     pos = {
         x = 6,
         y = 0
     },
+    pronouns = "he_him",
     cost = 35,
     rarity = 4,
     blueprint_compat = true,
@@ -33,6 +34,10 @@ SMODS.Joker{ --Rentarou Aijou
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
     in_pool = function (self, args)
         return false
     end,

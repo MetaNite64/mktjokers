@@ -10,7 +10,7 @@ SMODS.Joker{ --Haru Urara
     loc_txt = {
         ['name'] = '{f:5}ハルウララ',
         ['text'] = {
-            [1] = '{X:chips,C:white}+1{} Chips',
+            [1] = '{C:chips}+1{} Chip',
             [2] = '{s:0.8,C:dark_edition}Always bet on losing horses!{}'
         },
         ['unlock'] = {
@@ -24,6 +24,7 @@ SMODS.Joker{ --Haru Urara
         x = 5,
         y = 2
     },
+    pronouns = "she_her",
     cost = 1,
     rarity = 1,
     blueprint_compat = true,
@@ -32,6 +33,10 @@ SMODS.Joker{ --Haru Urara
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
     in_pool = function(self, args)
           return (
           not args 
@@ -44,10 +49,8 @@ SMODS.Joker{ --Haru Urara
 
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
-            if true then
-                if SMODS.pseudorandom_probability(card, 'group_0_4a6324d9', 1, card.ability.extra.odds, 'j_modprefix_haruurara') then
-                      SMODS.calculate_effect({Xmult = card.ability.extra.Xmult}, card)
-                  end
+            if SMODS.pseudorandom_probability(card, 'group_0_4a6324d9', 1, card.ability.extra.odds, 'j_modprefix_haruurara') then
+                SMODS.calculate_effect({Xmult = card.ability.extra.Xmult}, card)
             else
                 return {
                     chips = card.ability.extra.chips,

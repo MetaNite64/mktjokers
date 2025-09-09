@@ -6,6 +6,7 @@ SMODS.Joker{ --Dont Tap The Joker
         }
     },
     loc_vars = function(self, info_queue, card)
+        table.insert(info_queue, G.P_CENTERS.m_glass)
         return { 
             vars = { card.ability.extra.mult } 
         }
@@ -13,16 +14,17 @@ SMODS.Joker{ --Dont Tap The Joker
     loc_txt = {
         ['name'] = 'Dont Tap The Joker',
         ['text'] = {
-            '{C:red}+#1#{} Mult',
-            'Destroys itself when',
-            'clicked or when a glass card',
-            'is used.'
+            '{C:mult}+#1#{} Mult',
+            '{C:red}Self-destructs{} when',
+            'clicked or if a {C:attention}Glass{} card',
+            'is destroyed'
         }
     },
     pos = {
         x = 0,
         y = 0
     },
+    pronouns = "he_him",
     cost = 5,
     rarity = 2,
     blueprint_compat = true,
@@ -31,6 +33,9 @@ SMODS.Joker{ --Dont Tap The Joker
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     calculate = function(self, card, context)
         -- apply mult

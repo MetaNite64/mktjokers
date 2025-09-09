@@ -8,8 +8,9 @@ SMODS.Joker{ --Yakuzen Kusuri
     loc_txt = {
         ['name'] = '{f:5}薬膳 楠莉',
         ['text'] = {
-            [1] = '{C:attention}1/5{} chance to give a scored',
-            [2] = 'card a random Enhancement.'
+            'Each scored card has',
+            'a {C:green}1 in 5{} chance to',
+            'gain a random {C:attention}Enhancement{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -22,14 +23,18 @@ SMODS.Joker{ --Yakuzen Kusuri
         x = 2,
         y = 3
     },
+    pronouns = "she_her",
     cost = 8,
-    rarity = 3,
+    rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     calculate = function(self, card, context)
         if context.individual and context.cardarea == G.play  then

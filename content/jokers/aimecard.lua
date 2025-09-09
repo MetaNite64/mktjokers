@@ -9,8 +9,8 @@ SMODS.Joker{ --Aime Card
     loc_txt = {
         ['name'] = 'Aime Card',
         ['text'] = {
-            '{C:attention}1 in 2{} chance for',
-            'played cards to return to deck.'
+            '{C:green}1 in 2{} chance for',
+            'scoring cards to return to deck.'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -20,6 +20,7 @@ SMODS.Joker{ --Aime Card
         x = 0,
         y = 2
     },
+    pronouns = "it_its",
     cost = 5,
     rarity = 2,
     blueprint_compat = true,
@@ -28,6 +29,9 @@ SMODS.Joker{ --Aime Card
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
 -- this is a temporary effect. i will replace this once i figure out how to implement it
 

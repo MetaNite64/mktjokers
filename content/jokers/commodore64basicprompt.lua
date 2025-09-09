@@ -8,7 +8,8 @@ SMODS.Joker{ --Commodore 64 BASIC Prompt
     loc_txt = {
         ['name'] = 'Commodore 64 BASIC Prompt',
         ['text'] = {
-            [1] = 'Retrigger all {C:attention}10s{} twice.'
+            [1] = 'Retrigger all played {C:attention}10s{}',
+            [2] = '{C:attention}#1#{} additional times'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -18,6 +19,7 @@ SMODS.Joker{ --Commodore 64 BASIC Prompt
         x = 1,
         y = 3
     },
+    pronouns = "it_its",
     cost = 5,
     rarity = 2,
     blueprint_compat = true,
@@ -26,6 +28,13 @@ SMODS.Joker{ --Commodore 64 BASIC Prompt
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return {vars = {card.ability.extra.repetitions}}
+    end,
 
     calculate = function(self, card, context)
         if context.repetition and context.cardarea == G.play  then

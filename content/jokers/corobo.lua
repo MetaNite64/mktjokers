@@ -17,8 +17,8 @@ SMODS.Joker{ --Corobo
     loc_txt = {
         ['name'] = "Corobo's Co-primes!",
         ['text'] = {
-            [1] = 'Balances {C:blue}Chips{} and {C:red}Mult{} if',
-            [2] = '{C:blue}Chips{} and {C:red}Mult{} are {C:attention}coprimes{}.'
+            [1] = 'Balance {C:blue}Chips{} and {C:red}Mult{} if',
+            [2] = '{C:blue}Chips{} and {C:red}Mult{} are {C:attention}coprime{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -28,6 +28,7 @@ SMODS.Joker{ --Corobo
         x = 6,
         y = 2
     },
+    pronouns = "she_her",
     cost = 6,
     rarity = 2,
     blueprint_compat = true,
@@ -36,6 +37,15 @@ SMODS.Joker{ --Corobo
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return { 
+            vars = { colours = {{0.8, 0.45, 0.85, 1}} } 
+        }
+    end,
 
     calculate = function(self, card, context)
         if context.final_scoring_step and context.cardarea == G.jokers then

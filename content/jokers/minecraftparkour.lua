@@ -10,7 +10,7 @@ SMODS.Joker{ --Minecraft Parkour
     loc_txt = {
         ['name'] = 'Minecraft Parkour',
         ['text'] = {
-            [1] = 'This Joker gives {X:red,C:white}1-4x{} Mult'
+            [1] = '{X:red,C:white}X1-4{} Mult'
         },
         ['unlock'] = {
             [1] = ''
@@ -20,6 +20,7 @@ SMODS.Joker{ --Minecraft Parkour
         x = 0,
         y = 0
     },
+    pronouns = "it_its",
     cost = 6,
     rarity = 3,
     blueprint_compat = true,
@@ -28,6 +29,15 @@ SMODS.Joker{ --Minecraft Parkour
     unlocked = true,
     discovered = true,
     atlas = 'mcparkour',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+
+    loc_vars = function(self, info_queue, card)
+        return { 
+            vars = { card.ability.extra.Xmult_min, card.ability.extra.Xmult_max } 
+        }
+    end,
 
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then

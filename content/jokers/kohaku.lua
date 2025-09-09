@@ -2,7 +2,7 @@ SMODS.Joker{ --コハク
     key = "kohaku",
     config = {
         extra = {
-            multinum = 1.5
+            multinum = 0.25
         }
     },
     loc_vars = function(self, queue, card) 
@@ -18,17 +18,18 @@ SMODS.Joker{ --コハク
         return {
             vars = {
                 card.ability.extra.multinum,
-                math.max(card.ability.extra.multinum * count, 1) -- are you sure you want X0 Mult?
+                (card.ability.extra.multinum * count) + 1
             }
         } end,
     loc_txt = {
         ['name'] = '{f:5}コハク',
         ['text'] = {
-            'Gives {X:red,C:white}X#1#{} Mult for every',
-            '{C:attention}9{} in your deck',
-            '{C:inactive}(Currently {}{X:red,C:white}X#2#{}{C:inactive}){}'
+            '{C:white,X:mult}X#1#{} Mult for each',
+            '{C:attention}9{} in full deck',
+            '{C:inactive}(Currently {C:white,X:mult}X#2#{C:inactive} Mult)'
         }
     },
+    pronouns = "she_her",
     pos = {
         x = 4,
         y = 1,
@@ -41,7 +42,10 @@ SMODS.Joker{ --コハク
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
-
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
+    
     calculate = function(self, card, context)
         if context.cardarea == G.jokers and context.joker_main  then
             local count = 0
@@ -51,7 +55,7 @@ SMODS.Joker{ --コハク
                 end
             end
             return {
-                Xmult = math.max(card.ability.extra.multinum * count, 1) -- are you sure you want X0 Mult?
+                Xmult = (card.ability.extra.multinum * count) + 1
             }
         end
     end

@@ -8,8 +8,8 @@ SMODS.Joker{ --tbh creature
     loc_txt = {
         ['name'] = 'tbh creature',
         ['text'] = {
-            [1] = '{C:attention}#1# in #2#{} chance to create a',
-            [2] = 'random {C:edition}Negative{} consumeable',
+            [1] = '{C:green}#1# in #2#{} chance to create a',
+            [2] = 'random {C:dark_edition}Negative{} {C:attention}consumable',
             [3] = 'at end of round.'
         },
         ['unlock'] = {
@@ -20,16 +20,21 @@ SMODS.Joker{ --tbh creature
         x = 6,
         y = 3
     },
+    pronouns = "autism",
     cost = 6,
-    rarity = 1,
+    rarity = 2,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
         local new_numerator, new_denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'j_modprefix_tbhcreature') 
         return {vars = {new_numerator, new_denominator}}
     end,

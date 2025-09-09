@@ -8,7 +8,8 @@ SMODS.Joker{ --Milkys Fuckass Plushie
     loc_txt = {
         ['name'] = 'Milkys Fuckass Plushie',
         ['text'] = {
-            [1] = 'Played Aces give {X:red,C:white}X#1#{} Mult when scored'
+            [1] = 'Played {C:attention}Aces{} give {C:white,X:mult}X#1#{}',
+            [2] = 'Mult when scored'
         },
     },
     pos = {
@@ -30,6 +31,7 @@ SMODS.Joker{ --Milkys Fuckass Plushie
             card.ability.extra.Xmult
         }
     } end,
+    pronouns = "she_theyxhey",
     cost = 20,
     rarity = 4,
     blueprint_compat = true,

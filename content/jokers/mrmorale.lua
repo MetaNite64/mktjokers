@@ -19,9 +19,9 @@ SMODS.Joker{ --Mr. Morale and the Big Steppers
     loc_txt = {
         ['name'] = 'Mr. Morale and the Big Steppers',
         ['text'] = {
-            '{C:red}+#2#{} Mult every',
-            '{C:attention}#3#{} cards discarded',
-            '{C:inactive}Currently {}{C:red}+#4#{}{C:inactive} mult (#1# cards discarded){}'
+            'This Joker gains {C:red}+#2#{} Mult',
+            'every {C:attention}#3#{} cards discarded',
+            '{C:inactive}Currently {C:red}+#4#{C:inactive} Mult (#1# cards discarded){}'
         },
         ['unlock'] = {
             [1] = ''
@@ -31,14 +31,18 @@ SMODS.Joker{ --Mr. Morale and the Big Steppers
         x = 9,
         y = 1
     },
+    pronouns = "he_him",
     cost = 6,
-    rarity = 2,
+    rarity = 3,
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 
     calculate = function(self, card, context)
         if context.discard then

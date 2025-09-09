@@ -1,4 +1,4 @@
-SMODS.Joker{ --MiLKY-P
+SMODS.Joker{ -- MiLKY-P
     key = "milky",
     config = {
         extra = {
@@ -9,10 +9,10 @@ SMODS.Joker{ --MiLKY-P
         ['name'] = 'MiLKY-P',
         ['text'] = {
             'Applies a random',
-            'Effect, {C:dark_edition}Edition{} and Seal',
-            'to a card when scored.',
+            '{C:enhanced}Enhancement{}, {C:dark_edition}Edition{}, and',
+            '{C:attention}Seal{} to scored cards',
             '',
-            '{C:inactive}The self-insert of all time.{}'
+            '{C:inactive}The self-insert of all time'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -33,6 +33,7 @@ SMODS.Joker{ --MiLKY-P
             card.children.floating_sprite:draw_shader('dissolve', nil, nil,nil,card.children.center,sc, rotate_mod,xm,ym,nil, 0.6)
         end
     end},
+    pronouns = "she_theyxhey",
     cost = 39,
     rarity = 4,
     blueprint_compat = true,

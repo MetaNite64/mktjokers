@@ -14,13 +14,14 @@ SMODS.Joker{ --ruby
         ['name'] = '{f:5}ｒｕｂｙ',
         ['text'] = {
             'the person who made entropy',
-            '{X:red,C:white}x#1#{} Mult'
+            '{C:white,X:mult}X#1#{} mult'
         }
     },
     pos = {
         x = 6,
         y = 1
     },
+    pronouns = "she_they",
     cost = 20,
     rarity = 4,
     blueprint_compat = true,
@@ -29,6 +30,7 @@ SMODS.Joker{ --ruby
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+
     in_pool = function (self, args)
         return false
     end,
