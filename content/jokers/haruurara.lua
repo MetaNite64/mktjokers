@@ -4,14 +4,15 @@ SMODS.Joker{ --Haru Urara
         extra = {
             odds = 10,
             Xmult = 100,
-            chips = 1
+            chips = 113
         }
     },
     loc_txt = {
         ['name'] = '{f:5}ハルウララ',
         ['text'] = {
-            [1] = '{C:chips}+1{} Chip',
-            [2] = '{s:0.8,C:dark_edition}Always bet on losing horses!{}'
+            '{C:chips}+113{} Chips',
+            '{s:0.8,C:dark_edition}Rest in peace, our shining star.{}',
+            '{s:0.6,C:inactive}2/27/1996 - 9/9/2025{}'
         },
         ['unlock'] = {
             [1] = 'Unlocked by default.'
@@ -58,13 +59,5 @@ SMODS.Joker{ --Haru Urara
                 }
             end
         end
-    end,
-
-    add_to_deck = function(self, card, from_debuff)
-        G.jokers.config.card_limit = G.jokers.config.card_limit + 1
-    end,
-
-    remove_from_deck = function(self, card, from_debuff)
-        G.jokers.config.card_limit = G.jokers.config.card_limit - 1
     end
 }

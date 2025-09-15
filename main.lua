@@ -33,6 +33,15 @@ SMODS.Atlas({
     py = 95,
 })
 
+SMODS.Atlas({
+    key = "blinds", -- dont change this until you figure out how to change it without breaking everything
+    path = "bossblinds_atlas.png",
+    px = 34,
+    py = 34,
+    atlas_table = "ANIMATION_ATLAS",
+    frames = 21,
+})
+
 SMODS.Atlas {
     key = "modicon",
     path = "modicon.png",
@@ -47,6 +56,7 @@ SMODS.Atlas {
     path = "selfinsert_atlas.png",
     px = 71,
     py = 95,
+
 }
 
 SMODS.Atlas {
@@ -70,6 +80,9 @@ local dt_table = {
     {"j_mktjk_milky",0.06,11,2},
     {"j_mktjk_mcparkour",0.06,19,4},
 }
+
+mktjk = {}
+mktjk.path = ""..SMODS.current_mod.path
 
 --[[To use this:
 
@@ -271,6 +284,13 @@ SMODS.Sound({
     end
 })
 
+-- make the object type for all milky jokers
+SMODS.ObjectType {
+    key = "milkys_jokers",
+    default = "j_mktjk_milky",
+    cards = {}
+}
+
 local NFS = require("nativefs")
 to_big = to_big or function(a) return a end
 lenient_bignum = lenient_bignum or function(a) return a end
@@ -383,6 +403,7 @@ load_boosters_folder()
 load_crossmod_folder()
 
 assert(SMODS.load_file("titlescreen.lua"))()
+assert(SMODS.load_file("ui.lua"))()
 
 -- i dont know why this is in main.lua but it doesnt work any other way
 
