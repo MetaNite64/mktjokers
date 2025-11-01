@@ -33,6 +33,7 @@ SMODS.Blind {
     atlas = "blinds",
     pos = { x = 0, y = 0 },
     boss = { min = 1 },
+    mult = 30,
     boss_colour = HEX("A6A6A6"),
     set_blind = function(self)
         G.E_MANAGER:add_event(Event({
@@ -43,12 +44,6 @@ SMODS.Blind {
                 MKTJK_dvd_stuff.timer = 0
                 MKTJK_dvd_stuff.angle = (math.random() + 0.5) * math.pi / 4
                 MKTJK_dvd_stuff.velocity_vector = {dx = 130 * math.cos(MKTJK_dvd_stuff.angle), dy = 130 * math.sin(MKTJK_dvd_stuff.angle)}
-                G.E_MANAGER:add_event(Event({
-                    trigger = "immediate",
-                    func = function()
-                        return not MKTJK_dvd_stuff.in_dvd
-                    end
-                }))
                 return true
             end
         }))

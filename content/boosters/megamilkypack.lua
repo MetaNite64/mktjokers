@@ -5,10 +5,10 @@ SMODS.Booster {
         text = {
             "Choose 2 of 6 MiLKY's Jokers"
         },
-        group_name = "milkysboosters"
     },
     config = { extra = 6, choose = 2 },
     atlas = "boosters",
+    cost = 8,
     pos = { x = 1, y = 0 },
     group_key = "milkysboosters",
     discovered = true,

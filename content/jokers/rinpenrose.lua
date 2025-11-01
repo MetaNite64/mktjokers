@@ -15,13 +15,16 @@ SMODS.Joker{ --Rin Penrose And The Balatro Polycule
         x = 7,
         y = 0
     },
-    pronouns = "she_her",
+    pronouns = "he_him",
     cost = 14,
-    rarity = 4,
+    rarity = "mktjk_legendplus",
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
     unlocked = true,
     discovered = true,
     atlas = 'jokers',
+    pools = { 
+        ["milkys_jokers"] = true 
+    },
 }

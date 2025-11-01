@@ -67,6 +67,15 @@ SMODS.Atlas {
 }
 
 SMODS.Atlas {
+    key = "flynn",
+    path = "flynn_atlas.png",
+    px = 71,
+    py = 95,
+}
+
+-- the 2 wide joker 
+
+SMODS.Atlas {
     key = "2widejoker",
     path = "doublewide_joker.png",
     px = 35,
@@ -79,6 +88,7 @@ local upd = Game.update
 local dt_table = {
     {"j_mktjk_milky",0.06,11,2},
     {"j_mktjk_mcparkour",0.06,19,4},
+    {"j_mktjk_flynn",0.12,15,0,'loop',0,0},
 }
 
 mktjk = {}
@@ -288,7 +298,13 @@ SMODS.Sound({
 SMODS.ObjectType {
     key = "milkys_jokers",
     default = "j_mktjk_milky",
-    cards = {}
+    cards = {},
+    rarities = {
+      { key = "Common", rate = 0.7 },
+      { key = "Uncommon", rate = 0.25 },
+      { key = "Rare", rate = 0.05 },
+      { key = "Legendary", rate = 0 }
+    }
 }
 
 local NFS = require("nativefs")
@@ -307,6 +323,11 @@ local function load_jokers_folder()
             assert(SMODS.load_file("content/jokers/" .. file_name))()
         end
     end
+end
+
+local function load_rarities_file()
+    local mod_path = SMODS.current_mod.path
+    assert(SMODS.load_file("rarities.lua"))()
 end
 
 local function load_vouchers_folder()
@@ -394,6 +415,7 @@ local function load_crossmod_folder()
 end
 
 load_jokers_folder()
+load_rarities_file()
 load_vouchers_folder()
 load_decks_folder()
 load_seals_folder()
@@ -417,4 +439,12 @@ local shatterref = SMODS.shatters
 function SMODS.shatters(card)
   if card.config.center.key == 'j_mktjk_donttapthejoker' then return true end
   return shatterref(card)
+end
+
+-- date calc
+function SinceDay(year, month, day)
+    local now = os.date("*t")
+    local then_time = os.time({ year = year, month = month, day = day, hour = 0 })
+    local diff = os.difftime(os.time(now), then_time)
+    return math.floor(diff / (60 * 60 * 24))
 end

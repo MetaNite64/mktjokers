@@ -4,14 +4,22 @@ return {
             bl_mktjk_dvd = {
                 name = "The DVD",
                 text = {
-                    "Win when the",
-                    "DVD logo hits",
-                    "the corner"
+                    "X15 Blind size",
+                    "Win when the DVD",
+                    "logo hits the corner"
                 }
             },
             bl_mktjk_dvd_alt = {
                 name = "The DVD",
                 text = { "Win when the DVD logo hits the corner" }
+            },
+            bl_mktjk_kindergarten = {
+                name = "The Kindergarten",
+                text = {
+                    "All XMult effects",
+                    "are treated",
+                    "as +Mult"
+                }
             }
         },
         Other = {
@@ -39,6 +47,13 @@ return {
                 text = {
                     "{s:1.5}Kohaku",
                     "{C:inactive,s:0.9}(ko-ha-ku)"
+                },
+            },
+            mktjk_nokotan_name = {
+                name = "Joker Name",
+                text = {
+                    "{s:1.5}Nokotan",
+                    "{C:inactive,s:0.9}(no-ko-tan)"
                 },
             },
             mktjk_kamishirorui_name = {
@@ -99,6 +114,13 @@ return {
                     "{C:inactive,s:0.9}@silly_goober_0nthewall"
                 },
             },
+            mktjk_credit_candycane = {
+                name = "Art done by",
+                text = {
+                    "{s:1.5}Candycane",
+                    "{C:inactive,s:0.9}@candycaneanniahlator_etherware2"
+                },
+            },
         },
         Mod = {
             milkysbullshit = {
@@ -116,6 +138,7 @@ return {
             k_saved_rentarou = "Rentarou has defied death itself with the power of love.",
             b_mktjk_website = "https://milkyway.moe",
             b_mktjk_credits = "Credits",
+            milkysboosters = "Milky Pack"
         },
     }
 }
