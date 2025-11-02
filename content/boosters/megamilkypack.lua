@@ -3,10 +3,14 @@ SMODS.Booster {
     loc_txt = {
         name = "Mega MiLKY Pack",
         text = {
-            "Choose 2 of 6 MiLKY's Jokers"
+            "Choose {C:attention}#1#{} of {C:attention}#2#{}", 
+            "MiLKY's Jokers"
         },
     },
-    config = { extra = 6, choose = 2 },
+    config = { 
+        extra = 8, 
+        choose = 2 
+    },
     atlas = "boosters",
     cost = 8,
     pos = { x = 1, y = 0 },
@@ -24,7 +28,7 @@ SMODS.Booster {
             area = G.pack_cards,
             skip_materialize = true,
             soulable = true,
-            key_append = "mktjk_mega_milky_pack"
+            key_append = "mktjk_milky_pack"
         }
     end,
     particles = function(self)

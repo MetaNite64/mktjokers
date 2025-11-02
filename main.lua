@@ -6,35 +6,42 @@ SMODS.Atlas({
 })
 
 SMODS.Atlas({
-    key = "vouchers", -- dont change this until you figure out how to change it without breaking everything
+    key = "vouchers",
     path = "vouchers_atlas.png",
     px = 71,
     py = 95,
 })
 
 SMODS.Atlas({
-    key = "decks", -- dont change this until you figure out how to change it without breaking everything
+    key = "decks",
     path = "decks_atlas.png",
     px = 71,
     py = 95,
 })
 
 SMODS.Atlas({
-    key = "editions", -- dont change this until you figure out how to change it without breaking everything
+    key = "editions", 
     path = "editions_atlas.png",
     px = 71,
     py = 95,
 })
 
 SMODS.Atlas({
-    key = "boosters", -- dont change this until you figure out how to change it without breaking everything
+    key = "boosters", 
     path = "boosters_atlas.png",
     px = 71,
     py = 95,
 })
 
 SMODS.Atlas({
-    key = "blinds", -- dont change this until you figure out how to change it without breaking everything
+    key = "tags",
+    path = "tags_atlas.png",
+    px = 34,
+    py = 34,
+})
+
+SMODS.Atlas({
+    key = "blinds",
     path = "bossblinds_atlas.png",
     px = 34,
     py = 34,
@@ -313,6 +320,103 @@ lenient_bignum = lenient_bignum or function(a) return a end
 
 -- loading folders for jokers, vouchers, decks, seals, etc.
 
+-- loading folders for jokers, by rarity
+local function load_jokers_jimmy_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/0_jimmy"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/0_jimmy/" .. file_name))()
+        end
+    end
+end
+
+local function load_jokers_common_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/1_common"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/1_common/" .. file_name))()
+        end
+    end
+end
+
+local function load_jokers_uncommon_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/2_uncommon"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/2_uncommon/" .. file_name))()
+        end
+    end
+end
+
+local function load_jokers_rare_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/3_rare"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/3_rare/" .. file_name))()
+        end
+    end
+end
+
+local function load_jokers_epic_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/3a_epic"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/3a_epic/" .. file_name))()
+        end
+    end
+end
+
+local function load_jokers_legendary_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/4_legendary"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/4_legendary/" .. file_name))()
+        end
+    end
+end
+
+local function load_jokers_legendaryplus_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/4a_legendaryplus"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/4a_legendaryplus/" .. file_name))()
+        end
+    end
+end
+
+local function load_jokers_meta_folder()
+    local mod_path = SMODS.current_mod.path
+    local jokers_path = mod_path .. "/content/jokers/5_meta"
+    local files = NFS.getDirectoryItemsInfo(jokers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/jokers/5_meta/" .. file_name))()
+        end
+    end
+end
+
 local function load_jokers_folder()
     local mod_path = SMODS.current_mod.path
     local jokers_path = mod_path .. "/content/jokers"
@@ -402,6 +506,18 @@ local function load_boosters_folder()
     end
 end
 
+local function load_tags_folder()
+    local mod_path = SMODS.current_mod.path
+    local vouchers_path = mod_path .. "/content/tags"
+    local files = NFS.getDirectoryItemsInfo(vouchers_path)
+    for i = 1, #files do
+        local file_name = files[i].name
+        if file_name:sub(-4) == ".lua" then
+            assert(SMODS.load_file("content/tags/" .. file_name))()
+        end
+    end
+end
+
 local function load_crossmod_folder()
     local mod_path = SMODS.current_mod.path
     local vouchers_path = mod_path .. "/crossmod"
@@ -414,7 +530,16 @@ local function load_crossmod_folder()
     end
 end
 
+load_jokers_jimmy_folder()
+load_jokers_common_folder()
+load_jokers_uncommon_folder()
+load_jokers_rare_folder()
+load_jokers_epic_folder()
+load_jokers_legendary_folder()
+load_jokers_legendaryplus_folder()
+load_jokers_meta_folder()
 load_jokers_folder()
+
 load_rarities_file()
 load_vouchers_folder()
 load_decks_folder()
@@ -422,6 +547,7 @@ load_seals_folder()
 load_blinds_folder()
 load_editions_folder()
 load_boosters_folder()
+load_tags_folder()
 load_crossmod_folder()
 
 assert(SMODS.load_file("titlescreen.lua"))()
